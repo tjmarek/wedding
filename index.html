@@ -3,180 +3,307 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Wedding | Save the Date</title>
+    <title>Maya & Joseph | The Wedding</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300&family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #2c3e50;
-            --accent: #d4af37; /* Metallic Gold */
-            --bg: #fdfcfb;
-            --text: #4a4a4a;
+            --primary: #2d3436;
+            --accent: #b8926a; /* Muted Gold */
+            --bg: #f9f7f2;
+            --white: #ffffff;
+            --glass: rgba(255, 255, 255, 0.8);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
+            color: var(--primary);
+            line-height: 1.7;
         }
 
-        h1, h2, h3 {
+        h1, h2, h3, h4 {
             font-family: 'Cormorant Garamond', serif;
             font-weight: 300;
-            color: var(--primary);
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
         }
 
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)), 
-                        url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1920&q=80'); /* Replace with Couple Photo 1 */
-            background-size: cover;
-            background-position: center;
-            padding: 20px;
-        }
-
-        .hero-content {
-            background: rgba(255, 255, 255, 0.85);
-            padding: 40px 60px;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-        }
-
-        .hero h1 { font-size: 3.5rem; margin-bottom: 10px; }
-        .hero p { font-size: 1.2rem; letter-spacing: 5px; color: var(--accent); }
-
-        /* Content Sections */
-        .section {
-            padding: 100px 20px;
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .couple-images {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin: 40px 0;
-        }
-
-        .couple-images img {
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
             width: 100%;
-            height: 400px;
-            object-fit: cover;
-            filter: grayscale(20%);
-            transition: 0.5s;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 15px 0;
         }
 
-        .couple-images img:hover { filter: grayscale(0%); }
-
-        .details h2 { font-size: 2.5rem; margin-bottom: 20px; }
-        .details p { font-size: 1.1rem; margin-bottom: 40px; }
-
-        /* Buttons */
-        .cta-container {
+        nav ul {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            list-style: none;
+            gap: 25px;
             flex-wrap: wrap;
         }
 
-        .btn {
+        nav a {
             text-decoration: none;
-            padding: 15px 40px;
-            border: 1px solid var(--accent);
             color: var(--primary);
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            font-weight: 400;
+        }
+
+        nav a:hover { color: var(--accent); }
+
+        /* Hero */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), 
+                        url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero-box {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(8px);
+            padding: 60px;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .hero h1 { font-size: 4rem; margin-bottom: 10px; color: var(--white); }
+
+        /* Sections */
+        section { padding: 100px 20px; max-width: 1100px; margin: 0 auto; text-align: center; }
+        .section-title { font-size: 2.5rem; margin-bottom: 50px; position: relative; }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 1px;
+            background: var(--accent);
+            margin: 20px auto;
+        }
+
+        /* Party Grid */
+        .party-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .member img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 1px solid var(--accent);
+            padding: 5px;
+        }
+
+        .member h4 { font-size: 1.1rem; margin-bottom: 5px; }
+        .member p { font-size: 0.8rem; text-transform: uppercase; color: var(--accent); }
+
+        /* Itinerary List */
+        .itinerary-item {
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .itinerary-item span { color: var(--accent); font-weight: 300; }
+
+        /* FAQ */
+        .faq-item {
+            text-align: left;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+        .faq-item h4 { text-transform: none; letter-spacing: 1px; margin-bottom: 10px; font-weight: 500;}
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
             text-transform: uppercase;
             font-size: 0.8rem;
             letter-spacing: 2px;
-            transition: all 0.3s ease;
-            position: relative;
+            margin: 10px;
+            transition: 0.3s;
         }
+        .btn:hover { background: var(--accent); }
+        .btn-outline { background: transparent; border: 1px solid var(--primary); color: var(--primary); }
 
-        .btn:hover {
-            background-color: var(--accent);
-            color: white;
-        }
-
-        .btn-filled {
-            background-color: var(--primary);
-            color: white;
-            border: 1px solid var(--primary);
-        }
-
-        .btn-filled:hover {
-            background-color: transparent;
-            color: var(--primary);
-        }
-
-        /* Footer */
-        footer {
-            padding: 60px 20px;
-            background: #f4f1ea;
-            text-align: center;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
+        /* Map Image */
+        .map-img {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            margin: 30px 0;
+            border: 1px solid #ddd;
         }
 
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
-            .couple-images { grid-template-columns: 1fr; }
-            .hero-content { padding: 30px; }
+            nav ul { gap: 10px; }
+            nav a { font-size: 0.65rem; }
         }
     </style>
 </head>
 <body>
 
-    <header class="hero">
-        <div class="hero-content">
-            <p>SAVE THE DATE</p>
-            <h1>Alex & Sam</h1>
-            <p>08 . 24 . 2026</p>
-        </div>
-    </header>
+    <nav>
+        <ul>
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#itinerary">SCHEDULE</a></li>
+            <li><a href="#directions">LOCATION</a></li>
+            <li><a href="#party">WEDDING PARTY</a></li>
+            <li><a href="#registry">REGISTRY</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#rsvp">RSVP</a></li>
+        </ul>
+    </nav>
 
-    <section class="section">
-        <h2>The Celebration</h2>
-        <p>We can't wait to celebrate our special day with you in the heart of the city. Join us for a night of dinner, dancing, and happily ever after.</p>
-        
-        <div class="couple-images">
-            <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80" alt="Couple Photo 2">
-            <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80" alt="Couple Photo 3">
+    <div id="home" class="hero">
+        <div class="hero-box">
+            <p style="letter-spacing: 5px; margin-bottom: 20px;">JOIN US FOR THE WEDDING OF</p>
+            <h1>Maya & Joseph</h1>
+            <p>08 . 24 . 2026 | AUSTIN, TX</p>
         </div>
+    </div>
 
-        <div class="details">
-            <h3>When & Where</h3>
-            <p>Saturday, August 24, 2026 <br>
-               The Grand Estate, 123 Willow Lane <br>
-               Austin, Texas</p>
+    <section id="rsvp">
+        <h2 class="section-title">Kindly Respond</h2>
+        <p>Please let us know if you can join us by July 1st, 2026.</p>
+        <p style="margin-bottom: 30px; font-style: italic;">Ceremony to begin promptly at 5:30 PM. Please arrive early to be seated.</p>
+        <a href="YOUR_RSVP_LINK_HERE" class="btn">Confirm Attendance</a>
+    </section>
+
+    <section id="itinerary" style="background: #fff;">
+        <h2 class="section-title">The Day Of</h2>
+        <div class="itinerary-item">
+            <span>5:00 PM</span>
+            <h4>Arrival & Seating</h4>
         </div>
-
-        <div class="cta-container">
-            <a href="https://your-rsvp-link.com" class="btn btn-filled">RSVP Online</a>
-            <a href="https://your-honeyfund-link.com" class="btn">Honeymoon Fund</a>
+        <div class="itinerary-item">
+            <span>5:30 PM</span>
+            <h4>Wedding Ceremony</h4>
+            <p>Chapel Dulcinea</p>
+        </div>
+        <div class="itinerary-item">
+            <span>6:30 PM</span>
+            <h4>Reception to Follow</h4>
+            <p>The Veranda Room</p>
+        </div>
+        <div class="itinerary-item">
+            <span>7:00 PM</span>
+            <h4>Dinner, Drinks & Dancing</h4>
+            <p>Open Bar & Buffet Dinner</p>
         </div>
     </section>
 
-    <footer>
-        <p>MADE WITH LOVE BY ALEX & SAM</p>
-        <p style="margin-top: 10px; opacity: 0.6;">#AlexAndSam2026</p>
+    <section id="directions">
+        <h2 class="section-title">Location & Parking</h2>
+        <p><strong>Chapel Dulcinea</strong><br>16221 Crystal Hills Dr, Austin, TX 78737</p>
+        
+        <div style="margin: 30px 0;">
+            <p>Parking is available in the main lot adjacent to the welcome center. Follow the stone path toward the chapel.</p>
+            <img src="https://via.placeholder.com/800x450?text=Venue+Map+Image+Here" alt="Venue Map" class="map-img">
+        </div>
+
+        <div class="cta-container">
+            <a href="https://www.google.com/maps/search/?api=1&query=Chapel+Dulcinea+Austin+TX" target="_blank" class="btn btn-outline">Google Maps</a>
+            <a href="http://maps.apple.com/?q=Chapel+Dulcinea+Austin+TX" target="_blank" class="btn btn-outline">Apple Maps</a>
+        </div>
+    </section>
+
+    <section id="dress-code" style="background: #f2efea;">
+        <h2 class="section-title">Dress Code</h2>
+        <h3>Semi-Formal / Cocktail</h3>
+        <p style="max-width: 600px; margin: 20px auto;">We suggest cocktail attire. The ceremony is outdoors at the chapel, so please keep the Texas weather in mind when choosing your ensemble and footwear.</p>
+    </section>
+
+    <section id="party">
+        <h2 class="section-title">The Wedding Party</h2>
+        
+        <h3>The Happy Couple</h3>
+        <div class="party-grid">
+            <div class="member"><img src="https://via.placeholder.com/150" alt="Maya"><h4>Maya Benologa</h4><p>Bride</p></div>
+            <div class="member"><img src="https://via.placeholder.com/150" alt="Joseph"><h4>Joseph Marek</h4><p>Groom</p></div>
+        </div>
+
+        <h3 style="margin-top: 60px;">The Ladies</h3>
+        <div class="party-grid">
+            <div class="member"><img src="https://via.placeholder.com/150" alt="Bailey"><h4>Bailey Pena</h4><p>Maid of Honor</p></div>
+            <div class="member"><img src="https://via.placeholder.com/150" alt="Tianna"><h4>Tianna Sission</h4><p>Maid of Honor</p></div>
+            <div class="member"><img src="https://via.placeholder.com/150" alt="Iliana"><h4>Iliana Tavarez Sanchez</h4><p>Bridesmaid</p></div>
+            <div class="member"><img src="https://via.placeholder.com/150" alt="Ally"><h4>Ally Mathues</h4><p>Bridesmaid</p></div>
+        </div>
+
+        <h3 style="margin-top: 60px;">The Gentlemen</h3>
+        <div class="party-grid">
+            <div class="member"><img src="https://via.placeholder.com/150" alt="Nachite"><h4>Nachite Checatahwaiuwh</h4><p>Best Man</p></div>
+            <div class="member"><img src="https://via.placeholder.com/150" alt="Jordan"><h4>Jordan Cryer</h4><p>Groomsman</p></div>
+            <div class="member"><img src="https://via.placeholder.com/150" alt="Derrick"><h4>Derrick Gatorano</h4><p>Groomsman</p></div>
+            <div class="member"><img src="https://via.placeholder.com/150" alt="Brandon"><h4>Brandon Taylor</h4><p>Groomsman</p></div>
+        </div>
+
+        <h3 style="margin-top: 60px;">Honorary Members</h3>
+        <div class="party-grid">
+            <div class="member"><img src="https://via.placeholder.com/150" alt="Khiel"><h4>Khi'el Alexander</h4><p>Officiant</p></div>
+            <div class="member"><img src="https://via.placeholder.com/150" alt="Cadence"><h4>Cadence Marek</h4><p>Flower Girl</p></div>
+            <div class="member"><img src="https://via.placeholder.com/150" alt="Zander"><h4>Zander Mcgill</h4><p>Ringbearer</p></div>
+            <div class="member"><img src="https://via.placeholder.com/150" alt="Liam"><h4>Liam Marek</h4><p>Ringbearer</p></div>
+            <div class="member"><img src="https://via.placeholder.com/150" alt="Nathan"><h4>Nathan Ngyuen</h4><p>Usher</p></div>
+            <div class="member"><img src="https://via.placeholder.com/150" alt="Koby"><h4>Koby Barton</h4><p>Usher</p></div>
+        </div>
+    </section>
+
+    <section id="registry" style="background: var(--white);">
+        <h2 class="section-title">Registry</h2>
+        <p style="max-width: 600px; margin: 0 auto 30px;">Your presence at our wedding is the greatest gift we could ask for. However, if you wish to honor us with a gift, we are asking for donations to our honeymoon fund in lieu of traditional gifts.</p>
+        <a href="YOUR_HONEYMOON_FUND_LINK" class="btn">Contribute to Honeymoon Fund</a>
+    </section>
+
+    <section id="faq">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div class="faq-item">
+            <h4>Can I bring a plus one?</h4>
+            <p>Due to capacity limits at the chapel, we are only able to accommodate those listed on your invitation.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Are children welcome?</h4>
+            <p>We love your little ones! Children listed on the invitation are more than welcome to join the celebration.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Is there a shuttle?</h4>
+            <p>Guests are responsible for their own transportation to and from Chapel Dulcinea. Rideshare services like Uber and Lyft are available in the area.</p>
+        </div>
+    </section>
+
+    <footer style="padding: 100px 20px; background: var(--primary); color: #fff; text-align: center;">
+        <h2 style="color: #fff; margin-bottom: 20px;">M & J</h2>
+        <p>#MayaAndJoseph2026</p>
     </footer>
 
 </body>
